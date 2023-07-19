@@ -92,7 +92,9 @@ public class Move extends HelperFunctions implements setupVars{
     private static void assignColors(int loc1, int loc2, int loc3, boolean specialCase) {
         if (white1.equals(pieceLoc.get(loc1)) || white2.equals(pieceLoc.get(loc1))) {
             colorHeld = "White";
-        } else colorHeld = "Black";
+        } else {
+            colorHeld = "Black";
+        }
         if (white1.equals(pieceLoc.get(loc2)) || white2.equals(pieceLoc.get(loc2))) {
             colorTaking = "White";
         } else {
@@ -100,7 +102,9 @@ public class Move extends HelperFunctions implements setupVars{
         }
         if (white1.equals(pieceLoc.get(loc3)) || white2.equals(pieceLoc.get(loc3)) && !specialCase) {
             colorCollaborate = "White";
-        } else colorCollaborate = "Black";
+        } else {
+            colorCollaborate = "Black";
+        }
     }
     private static void takePiece(int loc) {
         if (colorHeld.equals(colorCollaborate) && !colorHeld.equals(colorTaking)) {
