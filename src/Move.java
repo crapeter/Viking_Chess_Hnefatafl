@@ -39,7 +39,7 @@ public class Move extends HelperFunctions implements setupVars{
                         takePiece(loc - 1);
                     }
                 }
-                case 9, 118 -> {
+                case 8, 118 -> {
                     if (pieceLoc.containsKey(loc + 1)) {
                         assignColors(loc, loc + 1, loc);
                         takePiece(loc + 1);
