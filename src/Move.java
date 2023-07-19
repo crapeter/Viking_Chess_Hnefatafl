@@ -31,35 +31,7 @@ public class Move extends HelperFunctions implements setupVars{
         }
     }
     private static void takesPiece(int loc) {
-        if (loc != 2 && loc != 9 && loc != 22 && loc != 32 && loc != 88 && loc != 98 && loc != 112 && loc != 118) {
-            if (pieceLoc.containsKey(loc - 11) && pieceLoc.containsKey(loc - 22) && !pieceLoc.get(loc).equals("King")) {
-                if (loc - 22 >= 0) {
-                    assignColors(loc, loc - 11, loc - 22, false);
-                }
-                takePiece(loc - 11);
-            }
-            if (pieceLoc.containsKey(loc - 1) && pieceLoc.containsKey(loc - 2) &&
-                    (loc - 2) / 8 == loc / 8 && !pieceLoc.get(loc).equals("King")) {
-                if (loc - 2 >= 0) {
-                    assignColors(loc, loc - 1, loc - 2, false);
-                }
-                takePiece(loc - 1);
-            }
-            if (pieceLoc.containsKey(loc + 1) && pieceLoc.containsKey(loc + 2) &&
-                    (loc + 2) / 8 == loc / 8 && !pieceLoc.get(loc).equals("King")) {
-                if (loc + 2 < 121) {
-                    assignColors(loc, loc + 1, loc + 2, false);
-                }
-                takePiece(loc + 1);
-            }
-            if (pieceLoc.containsKey(loc + 11) && pieceLoc.containsKey(loc + 22) && !pieceLoc.get(loc).equals("King")) {
-                if (loc + 22 < 121) {
-                    assignColors(loc, loc + 11, loc + 22, false);
-                }
-                takePiece(loc + 11);
-            }
-        }
-        else if (!pieceLoc.get(loc).equals("King")){
+        if (!pieceLoc.get(loc).equals("King")){
             switch (loc) {
                 case 2, 112 -> {
                     if (pieceLoc.containsKey(loc -1)) {
@@ -85,7 +57,34 @@ public class Move extends HelperFunctions implements setupVars{
                         takePiece(loc + 11);
                     }
                 }
-                default -> throw new IllegalStateException("Unexpected value: " + loc);
+                default -> {
+                    if (pieceLoc.containsKey(loc - 11) && pieceLoc.containsKey(loc - 22) && !pieceLoc.get(loc).equals("King")) {
+                        if (loc - 22 >= 0) {
+                            assignColors(loc, loc - 11, loc - 22, false);
+                        }
+                        takePiece(loc - 11);
+                    }
+                    if (pieceLoc.containsKey(loc - 1) && pieceLoc.containsKey(loc - 2) &&
+                            (loc - 2) / 8 == loc / 8 && !pieceLoc.get(loc).equals("King")) {
+                        if (loc - 2 >= 0) {
+                            assignColors(loc, loc - 1, loc - 2, false);
+                        }
+                        takePiece(loc - 1);
+                    }
+                    if (pieceLoc.containsKey(loc + 1) && pieceLoc.containsKey(loc + 2) &&
+                            (loc + 2) / 8 == loc / 8 && !pieceLoc.get(loc).equals("King")) {
+                        if (loc + 2 < 121) {
+                            assignColors(loc, loc + 1, loc + 2, false);
+                        }
+                        takePiece(loc + 1);
+                    }
+                    if (pieceLoc.containsKey(loc + 11) && pieceLoc.containsKey(loc + 22) && !pieceLoc.get(loc).equals("King")) {
+                        if (loc + 22 < 121) {
+                            assignColors(loc, loc + 11, loc + 22, false);
+                        }
+                        takePiece(loc + 11);
+                    }
+                }
             }
         }
     }
