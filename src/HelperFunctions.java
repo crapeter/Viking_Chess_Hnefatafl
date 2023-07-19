@@ -33,6 +33,7 @@ public class HelperFunctions implements setupVars {
         for (String pColor : whitePieces) {
             if (pColor.equals(curPieceColor)) {
                 currentColor = "White";
+                break;
             } else {
                 currentColor = "Black";
             }
