@@ -35,52 +35,52 @@ public class Move extends HelperFunctions implements setupVars{
             switch (loc) {
                 case 2, 112 -> {
                     if (pieceLoc.containsKey(loc -1)) {
-                        assignColors(loc, loc - 1, 0, true);
+                        assignColors(loc, loc - 1, loc);
                         takePiece(loc - 1);
                     }
                 }
                 case 9, 118 -> {
                     if (pieceLoc.containsKey(loc + 1)) {
-                        assignColors(loc, loc + 1, 0, true);
+                        assignColors(loc, loc + 1, loc);
                         takePiece(loc + 1);
                     }
                 }
                 case 22, 32 -> {
                     if (pieceLoc.containsKey(loc - 11)) {
-                        assignColors(loc, loc - 11, 0, true);
+                        assignColors(loc, loc - 11, loc);
                         takePiece(loc - 11);
                     }
                 }
                 case 88, 98 -> {
                     if (pieceLoc.containsKey(loc + 11)) {
-                        assignColors(loc, loc + 11, 0, true);
+                        assignColors(loc, loc + 11, loc);
                         takePiece(loc + 11);
                     }
                 }
                 default -> {
                     if (pieceLoc.containsKey(loc - 11) && pieceLoc.containsKey(loc - 22) && !pieceLoc.get(loc).equals("King")) {
                         if (loc - 22 >= 0) {
-                            assignColors(loc, loc - 11, loc - 22, false);
+                            assignColors(loc, loc - 11, loc - 22);
                         }
                         takePiece(loc - 11);
                     }
                     if (pieceLoc.containsKey(loc - 1) && pieceLoc.containsKey(loc - 2) &&
                             (loc - 2) / 8 == loc / 8 && !pieceLoc.get(loc).equals("King")) {
                         if (loc - 2 >= 0) {
-                            assignColors(loc, loc - 1, loc - 2, false);
+                            assignColors(loc, loc - 1, loc - 2);
                         }
                         takePiece(loc - 1);
                     }
                     if (pieceLoc.containsKey(loc + 1) && pieceLoc.containsKey(loc + 2) &&
                             (loc + 2) / 8 == loc / 8 && !pieceLoc.get(loc).equals("King")) {
                         if (loc + 2 < 121) {
-                            assignColors(loc, loc + 1, loc + 2, false);
+                            assignColors(loc, loc + 1, loc + 2);
                         }
                         takePiece(loc + 1);
                     }
                     if (pieceLoc.containsKey(loc + 11) && pieceLoc.containsKey(loc + 22) && !pieceLoc.get(loc).equals("King")) {
                         if (loc + 22 < 121) {
-                            assignColors(loc, loc + 11, loc + 22, false);
+                            assignColors(loc, loc + 11, loc + 22);
                         }
                         takePiece(loc + 11);
                     }
@@ -88,7 +88,7 @@ public class Move extends HelperFunctions implements setupVars{
             }
         }
     }
-    private static void assignColors(int loc1, int loc2, int loc3, boolean specialCase) {
+    private static void assignColors(int loc1, int loc2, int loc3) {
         if (white1.equals(pieceLoc.get(loc1)) || white2.equals(pieceLoc.get(loc1))) {
             colorHeld = "White";
         } else {
@@ -99,11 +99,12 @@ public class Move extends HelperFunctions implements setupVars{
         } else {
             colorTaking = "Black";
         }
-        if (white1.equals(pieceLoc.get(loc3)) || white2.equals(pieceLoc.get(loc3)) && !specialCase) {
+        if (white1.equals(pieceLoc.get(loc3)) || white2.equals(pieceLoc.get(loc3))) {
             colorCollaborate = "White";
         } else {
             colorCollaborate = "Black";
         }
+        System.out.println(colorHeld + " " + colorTaking + " " + colorCollaborate);
     }
     private static void takePiece(int loc) {
         if (colorHeld.equals(colorCollaborate) && !colorHeld.equals(colorTaking)) {
