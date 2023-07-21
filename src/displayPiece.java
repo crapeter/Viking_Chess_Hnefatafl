@@ -35,13 +35,11 @@ public class displayPiece extends HelperFunctions implements setupVars, ActionLi
                         break;
                     }
                     else System.out.println("Pick up a piece bozo");
-                    System.out.println(pieceHeld);
                 }
                 else {
                     if (holdingPiece)
                         Move.empty(i);
                     else System.out.println("Pick up a piece bozo");
-                    System.out.println(pieceHeld);
                 }
                 for (int j = 0; j < 121; j++) {
                     if (!buttons[j].getText().equals(""))
